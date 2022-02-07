@@ -1,0 +1,21 @@
+name = "A3CSServer"
+prefix = "a3csserver"
+author = "SzwedzikPL"
+mainprefix = "z"
+files = [
+    "*.dll",
+    "*.so",
+    "mod.cpp",
+    "LICENSE"
+]
+
+modname = "{{name}}"
+key_name = "{{prefix}}_{{version}}"
+authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
+
+releasebuild = [
+    "@zip a3csserver_{{semver.major}}.{{semver.minor}}.{{semver.patch}}"
+]
+
+[header_exts]
+version= "{{git \"id 8\"}}"

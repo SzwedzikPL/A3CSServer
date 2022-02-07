@@ -1,2 +1,2 @@
-# A3CSServer
-A3CS Server side mod
+# Arma3Coop System Server
+A3CS server-side mod.
