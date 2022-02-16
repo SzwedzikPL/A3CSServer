@@ -24,25 +24,6 @@ namespace a3cs_server
         private static readonly string[] sourceBodyMedTypeEvents = {"userMedSelf", "userMedAI", "userBandSelf", "userBandAI", "userIVSelf", "userIVAI" };
         private static readonly string[] sourceValueBodyMedTypeEvents = { "userBand", "userMed", "userIV" };
 
-        /*
-TODO:
-curModCreat
-curAccGrant
-curAccRev
-curHeal
-Drag
-Carry
-
-
-            https://github.com/acemod/ACE3/blob/master/addons/explosives/functions/fnc_defuseExplosive.sqf
-            https://github.com/acemod/ACE3/blob/master/addons/explosives/functions/fnc_detonateExplosive.sqf
-
-            https://github.com/acemod/ACE3/blob/master/addons/captives/functions/fnc_doApplyHandcuffs.sqf
-            https://github.com/acemod/ACE3/blob/master/addons/dogtags/functions/fnc_takeDogtag.sqf
-
-         */
-
-
         [DllExport("RVExtensionVersion", CallingConvention = CallingConvention.Winapi)]
         public static void RvExtensionVersion(StringBuilder output, int outputSize)
         {
