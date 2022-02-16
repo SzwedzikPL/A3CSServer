@@ -7,7 +7,6 @@ import shutil
 import datetime
 
 ######## GLOBALS #########
-from vendor import VENDOR
 MAINPREFIX = "z"
 PREFIX = "a3csserver_"
 IGNOREADDONS = []
