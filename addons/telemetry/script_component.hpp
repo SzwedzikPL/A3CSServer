@@ -1,5 +1,5 @@
-#define COMPONENT events
-#define COMPONENT_BEAUTIFIED Events
+#define COMPONENT telemetry
+#define COMPONENT_BEAUTIFIED Telemetry
 #include "\z\a3csserver\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

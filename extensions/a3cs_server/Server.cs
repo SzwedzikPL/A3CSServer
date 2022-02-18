@@ -13,12 +13,12 @@ namespace a3cs_server
     {
         private static readonly HttpClient client = new HttpClient();
         private static readonly string API_URL = "https://arma3coop.pl/arma_api.php";
-        private static readonly string API_KEY = "1234";
+        private static readonly string API_KEY = "56c72e";
 
-        private static readonly string[] simpleEvents = { "srvPreStart", "srvPreInit", "srvPostInit" };
+        private static readonly string[] simpleEvents = { "srvPreStart", "srvPreInit", "srvPostInit", "curModCreat" };
         private static readonly string[] sourceEvents = { "userFAKSelf", "userFAKAI", "userStitchAI", "userStitchSelf", "userUncon", "userWakeUp" };
-        private static readonly string[] valueEvents = { "msStart", "msEnd", "srvStChanged" };
-        private static readonly string[] sourceValueEvents = { "userFAK", "userStitch", "userNetConn", "userNetDisconn", "userDigTrench", "userGrenThrow" };
+        private static readonly string[] valueEvents = { "msStart", "msEnd", "srvStChanged", "srcSimObjSpawnS", "srcSimObjSpawnE", "curAccGrant", "curAccRev" };
+        private static readonly string[] sourceValueEvents = { "userFAK", "userStitch", "userNetConn", "userNetDisconn", "userDigTrench", "userGrenThrow", "curHeal", "userExpDet", "userExpDetOnDef", "userExpDef" };
         private static readonly string[] sourceBodyMedEvents = { "userSplintSelf", "userSplintAI", "userSetTourSelf", "userSetTourAI", "userRemTourSelf", "userRemTourAI" };
         private static readonly string[] sourceValueBodyMedEvents = { "userSplint", "userSetTour", "userRemTour" };
         private static readonly string[] sourceBodyMedTypeEvents = {"userMedSelf", "userMedAI", "userBandSelf", "userBandAI", "userIVSelf", "userIVAI" };
@@ -219,6 +219,33 @@ namespace a3cs_server
                 output.Append("true");
                 return 0;
             }
+
+            if (function == "srvTelemetry")
+            {
+                data.Add("fps", args[0].Trim('"'));
+                data.Add("fpsm", args[1].Trim('"'));
+                data.Add("pc", args[2].Trim('"'));
+                data.Add("apc", args[3].Trim('"'));
+                data.Add("gb", args[4].Trim('"'));
+                data.Add("go", args[5].Trim('"'));
+                data.Add("gi", args[6].Trim('"'));
+                data.Add("gc", args[7].Trim('"'));
+                data.Add("ai", args[8].Trim('"'));
+                data.Add("aisrv", args[9].Trim('"'));
+                data.Add("ais", args[10].Trim('"'));
+                data.Add("ains", args[11].Trim('"'));
+                data.Add("vc", args[12].Trim('"'));
+                data.Add("vsrv", args[13].Trim('"'));
+                data.Add("vsc", args[14].Trim('"'));
+                data.Add("vnsc", args[15].Trim('"'));
+                data.Add("oc", args[16].Trim('"'));
+                data.Add("cc", args[17].Trim('"'));
+
+                HTTPRequest(function, data);
+                output.Append("true");
+                return 0;
+            }
+                
 
             output.Append("false");
             return 1;

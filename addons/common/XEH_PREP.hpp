@@ -1,2 +1,3 @@
 
+PREP(arithmeticMean);
 PREP(cutStrForDB);

@@ -65,6 +65,77 @@ addMissionEventHandler ["PlayerDisconnected", {
   ]] call FUNC(logEvent);
 }] call CBA_fnc_addEventHandler;
 
+
+[QGVAR(detonate), [_unit, _item select 0, _item select 1]] call CBA_fnc_serverEvent;
+
+["ace_explosives_detonate", {
+  params ["_unit", "_explosive", "_delay"];
+  TRACE_3("ace_explosives_detonate",_unit,_explosive,_delay);
+
+  private _name = _unit call ACEFUNC(common,getName);
+  if (_delay > 0.5) then {
+    [{
+        params ["_args"];
+        _args params ["_explosive", "_name"];
+        if !(isNull _explosive) then {
+          ["userExpDet", [_name, typeOf _explosive]] call FUNC(logEvent);
+        };
+    }, [_explosive, _name], _delay - 0.5] call CBA_fnc_waitAndExecute;
+  } else {
+    ["userExpDet", [_name, typeOf _explosive]] call FUNC(logEvent);
+  };
+}] call CBA_fnc_addEventHandler;
+
+["ace_explosives_explodeOnDefuse", {
+    params ["_explosive", "_unit"];
+    TRACE_2("ace_explosives_explodeOnDefuse",_explosive,_unit);
+    ["userExpDetOnDef", [_unit call ACEFUNC(common,getName), typeOf _explosive]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
+["ace_explosives_defuse", {
+  params ["_explosive", "_unit"];
+  TRACE_2("ace_explosives_defuse",_explosive,_unit);
+  ["userExpDef", [_unit call ACEFUNC(common,getName), typeOf _explosive]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(curModCreat), {
+  LOG("curModCreat");
+  "a3csserver" callExtension "curModCreat";
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(curAccGrant), {
+  params ["_unit"];
+  TRACE_1("curAccGrant",_unit);
+  ["curAccGrant", [_unit call ACEFUNC(common,getName)]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(curAccRev), {
+  params ["_unit"];
+  TRACE_1("curAccRev",_unit);
+  ["curAccRev", [_unit call ACEFUNC(common,getName)]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(curHeal), {
+  params ["_unit", "_target"];
+  TRACE_2("curHeal",_unit,_target);
+  ["curHeal", [
+    _unit call ACEFUNC(common,getName),
+    _target call ACEFUNC(common,getName)
+  ]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(srcSimObjSpawnS), {
+  params ["_count"];
+  TRACE_1("srcSimObjSpawnS",_count);
+  ["srcSimObjSpawnS", [_count]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(srcSimObjSpawnE), {
+  params ["_count"];
+  TRACE_1("srcSimObjSpawnE",_count);
+  ["srcSimObjSpawnE", [_count]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
 [QGVAR(userGrenThrow), {
   params ["_user", "_ammo"];
   TRACE_2("userBandSelf",_user,_ammo);
