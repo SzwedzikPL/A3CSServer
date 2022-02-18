@@ -54,5 +54,4 @@ private _data = [
   _curatorsCount
 ];
 
-diag_log _data;
 "a3csserver" callExtension ["srvTelemetry", _data];
