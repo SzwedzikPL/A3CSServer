@@ -13,23 +13,23 @@ LOG("A3CSServer is ready!");
 
 0 spawn {
   sleep 0.01;
-  "a3csserver" callExtension ["msStart", [EGVAR(common,missionName)]];
+  "a3csserver" callExtension ["msStart", [floor CBA_missionTime, EGVAR(common,missionName)]];
 };
 
 addMissionEventHandler ["MPEnded", {
-  "a3csserver" callExtension ["msEnd", [EGVAR(common,missionName)]];
+  "a3csserver" callExtension ["msEnd", [floor CBA_missionTime, EGVAR(common,missionName)]];
 }];
 
 addMissionEventHandler ["PlayerConnected", {
 	params ["_id", "_uid", "_name"];
   if (_id == 2) exitWith {};
-  "a3csserver" callExtension ["userNetConn", [_name, _uid]];
+  "a3csserver" callExtension ["userNetConn", [floor CBA_missionTime, _name, _uid]];
 }];
 
 addMissionEventHandler ["PlayerDisconnected", {
 	params ["_id", "_uid", "_name"];
   if (_id == 2) exitWith {};
-  "a3csserver" callExtension ["userNetDisconn", [_name, _uid]];
+  "a3csserver" callExtension ["userNetDisconn", [floor CBA_missionTime, _name, _uid]];
 }];
 
 ["ace_unconscious", {
@@ -100,7 +100,7 @@ addMissionEventHandler ["PlayerDisconnected", {
 
 [QGVAR(curModCreat), {
   LOG("curModCreat");
-  "a3csserver" callExtension "curModCreat";
+  "a3csserver" callExtension ["curModCreat", [floor CBA_missionTime]];
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(curAccGrant), {

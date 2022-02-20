@@ -5,6 +5,7 @@
  */
 
 params ["_type", "_params"];
+_params insert [0, [floor CBA_missionTime]];
 TRACE_2("logEvent",_type,_params);
 
 if !(isServer) exitWith {};
