@@ -65,9 +65,6 @@ addMissionEventHandler ["PlayerDisconnected", {
   ]] call FUNC(logEvent);
 }] call CBA_fnc_addEventHandler;
 
-
-[QGVAR(detonate), [_unit, _item select 0, _item select 1]] call CBA_fnc_serverEvent;
-
 ["ace_explosives_detonate", {
   params ["_unit", "_explosive", "_delay"];
   TRACE_3("ace_explosives_detonate",_unit,_explosive,_delay);
@@ -96,6 +93,18 @@ addMissionEventHandler ["PlayerDisconnected", {
   params ["_explosive", "_unit"];
   TRACE_2("ace_explosives_defuse",_explosive,_unit);
   ["userExpDef", [_unit call ACEFUNC(common,getName), typeOf _explosive]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
+["acex_fortify_objectPlaced", {
+  params ["_unit", "", "_object"];
+  TRACE_2("acex_fortify_objectPlaced",_unit,_object);
+  ["userFortPlaced", [_unit call ACEFUNC(common,getName), typeOf _object]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
+["acex_fortify_objectDeleted", {
+  params ["_unit", "", "_object"];
+  TRACE_2("acex_fortify_objectDeleted",_unit,_object);
+  ["userFortRem", [_unit call ACEFUNC(common,getName), typeOf _object]] call FUNC(logEvent);
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(curModCreat), {
@@ -471,4 +480,28 @@ addMissionEventHandler ["PlayerDisconnected", {
     _shooter call ACEFUNC(common,getName),
     _ammoType
   ]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(userDressSetDep), {
+  params ["_unit"];
+  TRACE_1("userDressSetDep",_unit);
+  ["userDressSetDep", [_unit call ACEFUNC(common,getName)]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(userDressSetRem), {
+  params ["_unit"];
+  TRACE_1("userDressSetRem",_unit);
+  ["userDressSetRem", [_unit call ACEFUNC(common,getName)]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(userAntennaDep), {
+  params ["_unit"];
+  TRACE_1("userAntennaDep",_unit);
+  ["userAntennaDep", [_unit call ACEFUNC(common,getName)]] call FUNC(logEvent);
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(userAntennaRem), {
+  params ["_unit"];
+  TRACE_1("userAntennaRem",_unit);
+  ["userAntennaRem", [_unit call ACEFUNC(common,getName)]] call FUNC(logEvent);
 }] call CBA_fnc_addEventHandler;

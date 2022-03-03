@@ -16,7 +16,7 @@ namespace a3cs_server
         private static readonly string API_KEY = "56c72e";
 
         private static readonly string[] simpleEvents = { "srvPreInit", "srvPostInit" };
-        private static readonly string[] sourceEvents = { "userFAKSelf", "userFAKAI", "userStitchAI", "userStitchSelf", "userUncon", "userWakeUp" };
+        private static readonly string[] sourceEvents = { "userFAKSelf", "userFAKAI", "userStitchAI", "userStitchSelf", "userUncon", "userWakeUp", "userDressSetDep", "userDressSetRem", "userAntennaDep", "userAntennaRem" };
         private static readonly string[] valueEvents = { "srvPreStart", "msStart", "msEnd", "srcSimObjSpawnS", "srcSimObjSpawnE", "curAccGrant", "curAccRev" };
         private static readonly string[] sourceValueEvents = { "userFAK", "userStitch", "userNetConn", "userNetDisconn", "userDigTrench", "userGrenThrow", "curHeal", "userExpDet", "userExpDetOnDef", "userExpDef" };
         private static readonly string[] sourceBodyMedEvents = { "userSplintSelf", "userSplintAI", "userSetTourSelf", "userSetTourAI", "userRemTourSelf", "userRemTourAI" };

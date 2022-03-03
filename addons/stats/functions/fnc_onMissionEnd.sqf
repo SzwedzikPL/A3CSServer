@@ -7,7 +7,7 @@ LOG("onMissionEnd");
 
 // Exit if mission already ended - no double events
 if (GVAR(missionEnded)) exitWith {
-  LOG("Mission already ended - skip.")
+  LOG("Mission already ended - skip.");
 };
 GVAR(missionEnded) = true;
 
